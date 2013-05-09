@@ -10,7 +10,7 @@
 
 @interface DiceViewController : NSViewController
 
-@property (strong) IBOutlet NSTextField *lblDice;
+@property (strong) IBOutlet NSButton *btnDice;
 
 -(IBAction)btnDice_Clicked:(id)sender;
 

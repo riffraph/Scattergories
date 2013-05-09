@@ -34,9 +34,9 @@
     self.timerViewController = [[TimerViewController alloc] initWithNibName:@"TimerViewController" bundle:nil];
     [self.timerView addSubview:[self.timerViewController view]];
 //    [[self.timerViewController view] setFrame:[self.timerView bounds]];
-    
+    /*
     self.configViewController = [[ConfigViewController alloc] initWithNibName:@"ConfigViewController" bundle:nil];
-    [self.diceView addSubview:[self.configViewController view]];
+    [self.diceView addSubview:[self.configViewController view]];*/
 }
 
 @end

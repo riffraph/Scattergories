@@ -9,9 +9,25 @@
 #import <Cocoa/Cocoa.h>
 
 @interface TimerViewController : NSViewController
+{
+    NSTimer *_timer;
+    int currMinute;
+    int currSeconds;
+    
+    enum State
+    {
+        Stopped = 0,
+        Running,
+        Reset,
+        Finished
+    };
+}
+
+@property int currentState;
 
 @property (strong) IBOutlet NSTextField *lblTimer;
 @property (strong) IBOutlet NSTextField *lblMaxTime;
+@property (strong) IBOutlet NSButton *btnStart;
 
 -(IBAction)btnStart_clicked:(id)sender;
 -(IBAction)btnReset_clicked:(id)sender;
