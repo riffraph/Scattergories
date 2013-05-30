@@ -40,9 +40,14 @@
 
 -(void)reset
 {
-    [self setDiceLabel:nil];
-    [self stopTimer];
+    if (self.currentState == StartSequence || self.currentState == Running)
+    {
+        [self stopTimer];
+    }
+    
     [self resetTimer];
+    
+    [self setDiceLabel:nil];    
     [self setTimerLabel];
     [self setButtonState];
     [self setStartCounterLabel];
@@ -96,13 +101,13 @@
 {
     [_timer invalidate];
     
-    if (currMinute <= 0 && currSeconds == 0)
+    if (currMinute >= 0 && currSeconds >= 0)
     {
-        self.currentState = Finished;
+        self.currentState = Stopped;
     }
     else
     {
-        self.currentState = Stopped;
+        self.currentState = Finished;
     }
 }
 
@@ -111,7 +116,7 @@
     // TODO: use the configured countdown
     currStartCounter = 5;
     currMinute = 0;
-    currSeconds = 35;
+    currSeconds = 5;
     
     self.currentState = Reset;
 }
@@ -253,15 +258,16 @@
             {
                 currSeconds -= 1;
             }
-            if (currMinute >- 1)
+            
+            if (currMinute > -1)
             {
                 [self setTimerLabel];
             }
-        }
-        else
-        {
-            [self stopTimer];
-            [self setButtonState];
+            else
+            {
+                [self stopTimer];
+                [self setButtonState];
+            }
         }
     }
     else
