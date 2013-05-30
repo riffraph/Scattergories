@@ -20,10 +20,7 @@
 		74B925821737E88100DDB648 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B925811737E88100DDB648 /* AppController.m */; };
 		74B925861737E89800DDB648 /* DiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B925841737E89800DDB648 /* DiceViewController.m */; };
 		74B925871737E89800DDB648 /* DiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B925851737E89800DDB648 /* DiceViewController.xib */; };
-		74B9258B1739331E00DDB648 /* TimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B925891739331E00DDB648 /* TimerViewController.m */; };
-		74B9258C1739331E00DDB648 /* TimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B9258A1739331E00DDB648 /* TimerViewController.xib */; };
-		74B925901739364A00DDB648 /* ConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B9258E1739364A00DDB648 /* ConfigViewController.m */; };
-		74B925911739364A00DDB648 /* ConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B9258F1739364A00DDB648 /* ConfigViewController.xib */; };
+		74E5D5EB1757784200CF8D87 /* AlphaGen.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E5D5EA1757784200CF8D87 /* AlphaGen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,12 +58,8 @@
 		74B925831737E89800DDB648 /* DiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiceViewController.h; sourceTree = "<group>"; };
 		74B925841737E89800DDB648 /* DiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiceViewController.m; sourceTree = "<group>"; };
 		74B925851737E89800DDB648 /* DiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiceViewController.xib; sourceTree = "<group>"; };
-		74B925881739331E00DDB648 /* TimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerViewController.h; sourceTree = "<group>"; };
-		74B925891739331E00DDB648 /* TimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerViewController.m; sourceTree = "<group>"; };
-		74B9258A1739331E00DDB648 /* TimerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerViewController.xib; sourceTree = "<group>"; };
-		74B9258D1739364A00DDB648 /* ConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigViewController.h; sourceTree = "<group>"; };
-		74B9258E1739364A00DDB648 /* ConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigViewController.m; sourceTree = "<group>"; };
-		74B9258F1739364A00DDB648 /* ConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigViewController.xib; sourceTree = "<group>"; };
+		74E5D5E91757784200CF8D87 /* AlphaGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaGen.h; sourceTree = "<group>"; };
+		74E5D5EA1757784200CF8D87 /* AlphaGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaGen.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,12 +134,8 @@
 				74B925831737E89800DDB648 /* DiceViewController.h */,
 				74B925841737E89800DDB648 /* DiceViewController.m */,
 				74B925851737E89800DDB648 /* DiceViewController.xib */,
-				74B925881739331E00DDB648 /* TimerViewController.h */,
-				74B925891739331E00DDB648 /* TimerViewController.m */,
-				74B9258A1739331E00DDB648 /* TimerViewController.xib */,
-				74B9258D1739364A00DDB648 /* ConfigViewController.h */,
-				74B9258E1739364A00DDB648 /* ConfigViewController.m */,
-				74B9258F1739364A00DDB648 /* ConfigViewController.xib */,
+				74E5D5E91757784200CF8D87 /* AlphaGen.h */,
+				74E5D5EA1757784200CF8D87 /* AlphaGen.m */,
 			);
 			path = Scattergories;
 			sourceTree = "<group>";
@@ -257,8 +246,6 @@
 				74B9254F1736A3C400DDB648 /* Credits.rtf in Resources */,
 				74B925551736A3C400DDB648 /* MainMenu.xib in Resources */,
 				74B925871737E89800DDB648 /* DiceViewController.xib in Resources */,
-				74B9258C1739331E00DDB648 /* TimerViewController.xib in Resources */,
-				74B925911739364A00DDB648 /* ConfigViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,8 +284,7 @@
 				74B925521736A3C400DDB648 /* AppDelegate.m in Sources */,
 				74B925821737E88100DDB648 /* AppController.m in Sources */,
 				74B925861737E89800DDB648 /* DiceViewController.m in Sources */,
-				74B9258B1739331E00DDB648 /* TimerViewController.m in Sources */,
-				74B925901739364A00DDB648 /* ConfigViewController.m in Sources */,
+				74E5D5EB1757784200CF8D87 /* AlphaGen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

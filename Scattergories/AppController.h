@@ -16,7 +16,7 @@
 @property (weak) IBOutlet NSView *timerView;
 @property (strong) NSViewController *timerViewController;
 
-@property (weak) IBOutlet NSView *configView;
-@property (strong) NSViewController *configViewController;
+@property (weak) IBOutlet NSView *buttonsView;
+@property (strong) NSViewController *buttonsViewController;
 
 @end
