@@ -61,7 +61,7 @@
 {
     if (diceStr == nil)
     {
-        diceStr = @"roll me";
+        diceStr = @"click me!";
         
         [self.btnDice setFont:[NSFont fontWithName:@"Lucida Grande" size:20]];
     }
