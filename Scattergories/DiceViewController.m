@@ -18,6 +18,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+        
+        // TODO: use the configured values
+        maxSeconds = 90;
+        maxStartCounter = 5;
     }
     
     return self;
@@ -26,7 +30,7 @@
 -(void)dealloc
 {
     self.btnDice = nil;
-    self.lblMaxTime = nil;
+    self.stpTimer = nil;
     self.lblTimer = nil;
     self.lblStartSeq = nil;
     self.btnStart = nil;
@@ -36,6 +40,11 @@
 -(void)awakeFromNib
 {
     [self reset];
+    
+	[self.stpTimer setIncrement:10];
+    [self.stpTimer setMinValue:0];
+    [self.stpTimer setMaxValue:590];
+    [self.stpTimer setIntValue:maxSeconds];
 }
 
 -(void)reset
@@ -101,41 +110,73 @@
 {
     [_timer invalidate];
     
-    if (currMinute >= 0 && currSeconds >= 0)
+    if (currSeconds >= 0)
     {
         self.currentState = Stopped;
     }
     else
     {
         self.currentState = Finished;
+        
+        [self playSound];
     }
 }
 
 -(void)resetTimer
 {
-    // TODO: use the configured countdown
-    currStartCounter = 5;
-    currMinute = 0;
-    currSeconds = 5;
+    currStartCounter = maxStartCounter;
+    currSeconds = maxSeconds;
     
     self.currentState = Reset;
 }
 
 -(void)setTimerLabel
 {
-    [self.lblTimer setStringValue:[NSString stringWithFormat:@"%d%@%02d",currMinute,@":",currSeconds]];
+    int dispMins = floor(currSeconds / 60);
+    int dispSecs = round(currSeconds - dispMins * 60);
     
-    if (currMinute == 0 && currSeconds <= 10)
+    [self.lblTimer setStringValue:[NSString stringWithFormat:@"%d%@%02d",dispMins,@":",dispSecs]];
+    
+    if (currSeconds <= 10)
     {
+        [self playSound];
         [self.lblTimer setTextColor:[NSColor redColor]];
     }
-    else if (currMinute == 0 && currSeconds <= 30)
+    else if (currSeconds <= 30)
     {
         [self.lblTimer setTextColor:[NSColor orangeColor]];
     }
     else
     {
         [self.lblTimer setTextColor:[NSColor blackColor]];
+    }
+}
+
+-(void)playSound
+{
+    NSString* resourcePath = nil;
+    
+    switch (self.currentState)
+    {
+        case Stopped:
+        case Reset:
+        case StartSequence:
+            break;
+            
+        case Running:
+            resourcePath = [[NSBundle mainBundle] pathForResource:@"beep" ofType:@"wav" inDirectory:@"Resources"];
+            break;
+            
+        case Finished:
+            resourcePath = [[NSBundle mainBundle] pathForResource:@"drama" ofType:@"wav" inDirectory:@"Resources"];
+            break;
+    }
+    
+    if (resourcePath != nil)
+    {
+        NSSound* sound = [[NSSound alloc] initWithContentsOfFile:resourcePath byReference:YES];
+        [sound play];
+        sound = nil;
     }
 }
 
@@ -203,18 +244,21 @@
             // enable the timer controls
             [self.btnStart setEnabled:TRUE];
             [self.btnReset setEnabled:TRUE];
+            [self.stpTimer setEnabled:FALSE];
             break;
             
         case Finished:
             // enable the timer controls
             [self.btnStart setEnabled:FALSE];
             [self.btnReset setEnabled:TRUE];
+            [self.stpTimer setEnabled:FALSE];
             break;
             
         case Reset:
             // disable the timer controls
             [self.btnStart setEnabled:FALSE];
             [self.btnReset setEnabled:FALSE];
+            [self.stpTimer setEnabled:TRUE];
             break;
     }        
 }
@@ -247,27 +291,16 @@
         self.currentState = Running;
         
         // decrement main timer
-        if ((currMinute > 0 || currSeconds >= 0) && currMinute >= 0)
+        currSeconds -= 1;
+        
+        if (currSeconds >= 0)
         {
-            if (currSeconds == 0)
-            {
-                currMinute -= 1;
-                currSeconds = 59;
-            }
-            else if (currSeconds > 0)
-            {
-                currSeconds -= 1;
-            }
-            
-            if (currMinute > -1)
-            {
-                [self setTimerLabel];
-            }
-            else
-            {
-                [self stopTimer];
-                [self setButtonState];
-            }
+            [self setTimerLabel];
+        }
+        else
+        {
+            [self stopTimer];
+            [self setButtonState];
         }
     }
     else
@@ -306,6 +339,16 @@
 -(IBAction)btnReset_clicked:(id)sender
 {
     [self reset];
+}
+
+-(IBAction)stpTimer_clicked:(id)sender
+{
+    // update max time
+    maxSeconds = [self.stpTimer intValue];
+    currSeconds = maxSeconds;
+    
+    // refresh timer control
+    [self setTimerLabel];
 }
 
 @end

@@ -11,9 +11,13 @@
 @interface DiceViewController : NSViewController
 {
     NSTimer *_timer;
-    int currMinute;
+    
     int currSeconds;
+    int maxSeconds;
+    
     int currStartCounter;
+    int maxStartCounter;
+    
     
     enum State
     {
@@ -29,16 +33,14 @@
 @property (strong) IBOutlet NSButton *btnDice;
 @property (strong) IBOutlet NSTextField *lblTimer;
 @property (strong) IBOutlet NSTextField *lblStartSeq;
-@property (strong) IBOutlet NSTextField *lblMaxTime;
+@property (strong) IBOutlet NSStepper *stpTimer;
 @property (strong) IBOutlet NSButton *btnStart;
 @property (strong) IBOutlet NSButton *btnReset;
 
 -(IBAction)btnDice_Clicked:(id)sender;
 -(IBAction)btnStart_clicked:(id)sender;
 -(IBAction)btnReset_clicked:(id)sender;
+-(IBAction)stpTimer_clicked:(id)sender;
 
--(void)startTimer;
--(void)stopTimer;
--(void)resetTimer;
 
 @end
