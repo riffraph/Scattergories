@@ -58,7 +58,7 @@
 {
     // TODO: use the configured countdown
     currMinute = 0;
-    currSeconds = 1;
+    currSeconds = 35;
     
     self.currentState = Reset;
 }

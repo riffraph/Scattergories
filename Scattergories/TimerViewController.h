@@ -32,4 +32,8 @@
 -(IBAction)btnStart_clicked:(id)sender;
 -(IBAction)btnReset_clicked:(id)sender;
 
+-(void)startTimer;
+-(void)stopTimer;
+-(void)resetTimer;
+
 @end
